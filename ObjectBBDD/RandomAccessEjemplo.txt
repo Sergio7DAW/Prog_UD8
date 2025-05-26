@@ -1,0 +1,21 @@
+import java.io.RandomAccessFile;
+import java.io.IOException;
+
+public class EjemploRandomAccessFile {
+    public static void main(String[] args) {
+        try {
+            RandomAccessFile raf = new RandomAccessFile("datos.dat", "rw");
+            
+            raf.seek(100);            // Mover puntero a byte 100
+            raf.writeInt(12345);      // Escribir entero en esa posición
+            
+            raf.seek(100);            // Volver a la posición 100
+            int valor = raf.readInt(); // Leer entero
+            
+            System.out.println("Valor leído: " + valor);
+            raf.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+}
